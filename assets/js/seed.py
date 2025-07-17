@@ -196,24 +196,28 @@ html_template = """<!DOCTYPE html>
     <header class="header">
         <div class="container">
             <h1 class="logo">
-                <span class="logo-icon">🌍</span>
-                TimeSync Pro
+                
+                Timezoneplanner
             </h1>
 
-            <nav class="quick-links" role="navigation" aria-label="Popular country combinations">
-                <div class="quick-links-container">
-                    <a href="nepal-usa.html" class="quick-link">Nepal-USA</a>
-                    <a href="india-usa.html" class="quick-link">India-USA</a>
-                    <a href="uk-usa.html" class="quick-link">UK-USA</a>
-                    <a href="japan-usa.html" class="quick-link">Japan-USA</a>
-                    <a href="australia-usa.html" class="quick-link">Australia-USA</a>
-                    <div class="search-container">
-                        <input type="search" id="countrySearch" placeholder="Search countries..."
-                            aria-label="Search for country combinations">
-                        <button type="button" id="searchBtn" aria-label="Search">🔍</button>
-                    </div>
-                </div>
-            </nav>
+           <nav class="quick-links" role="navigation" aria-label="Popular country combinations">
+  <div class="quick-links-container">
+    <a href="nepal-usa.html" class="quick-link">Nepal-USA</a>
+    <a href="india-usa.html" class="quick-link">India-USA</a>
+    <a href="uk-usa.html" class="quick-link">UK-USA</a>
+    <a href="japan-usa.html" class="quick-link">Japan-USA</a>
+    <a href="australia-usa.html" class="quick-link">Australia-USA</a>
+
+    <div class="search-container" style="position: relative; color: black;">
+      <input type="search" id="countrySearch" placeholder="Search countries (Nepal-USA) ...."
+        aria-label="Search for country combinations" autocomplete="off" />
+      <button type="button" id="searchBtn" aria-label="Search">🔍</button>
+      <ul id="searchSuggestions"
+          style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ccc; z-index: 10; list-style: none; padding: 0; margin: 0; max-height: 200px; overflow-y: auto; display: none;"></ul>
+    </div>
+  </div>
+</nav>
+
         </div>
     </header>
 
@@ -349,7 +353,7 @@ html_template = """<!DOCTYPE html>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 TimeSync Pro. All rights reserved. | Making global collaboration easier.</p>
+                <p>&copy; 2024 Timezoneplanner. All rights reserved. | Making global collaboration easier.</p>
             </div>
         </div>
     </footer>

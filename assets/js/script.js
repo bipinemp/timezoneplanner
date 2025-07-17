@@ -2,6 +2,84 @@ const { DateTime } = luxon;
 
 class MeetingPlanner {
   constructor() {
+    this.validPages = [
+      "france-myanmar",
+      "spain-venezuela",
+      "uk-usa",
+      "czech-japan",
+      "mexico-spain",
+      "turkey-usa",
+      "terms-of-service",
+      "uk-usa-west",
+      "hongkong-usa",
+      "korea-uk",
+      "colombia-netherlands",
+      "egypt-usa-central",
+      "brazil-switzerland",
+      "usa-uzbekistan",
+      "index",
+      "nepal-switzerland",
+      "canada-atlantic-japan",
+      "singapore-usa-mountain",
+      "spain-usa",
+      "ukraine-usa-central",
+      "finland-usa-central",
+      "australia-south-uk",
+      "netherlands-peru",
+      "canada-poland",
+      "newzealand-uk",
+      "france-usa",
+      "southafrica-usa",
+      "austria-usa-central",
+      "germany-kazakhstan",
+      "singapore-usa-central",
+      "germany-nigeria",
+      "belgium-singapore",
+      "denmark-usa",
+      "germany-usa-central",
+      "bangladesh-usa-central",
+      "indonesia-usa",
+      "usa-central-vietnam",
+      "australia-north-singapore",
+      "alaska-india",
+      "australia-west-malaysia",
+      "sweden-usa",
+      "norway-usa-west",
+      "contact",
+      "hawaii-japan",
+      "australia-usa",
+      "australia-nepal",
+      "india-usa",
+      "italy-japan",
+      "fiji-usa",
+      "canada-uk",
+      "japan-usa-west",
+      "argentina-spain",
+      "chile-hongkong",
+      "canada-west-korea",
+      "taiwan-usa-central",
+      "japan-usa",
+      "morocco-uae",
+      "australia-uae",
+      "pakistan-usa",
+      "australia-srilanka",
+      "india-uk",
+      "privacy-policy",
+      "canada-germany",
+      "hungary-philippines",
+      "philippines-uk",
+      "nepal-usa",
+      "canada-thailand",
+      "about",
+      "netherlands-usa",
+      "kenya-uk",
+      "ireland-japan",
+      "canada-east-france",
+      "australia-east-usa-west",
+      "iran-uk",
+      "japan-uk",
+    ];
+
     this.initializeElements();
     this.bindEvents();
     this.updateCurrentTimes();
@@ -20,6 +98,7 @@ class MeetingPlanner {
     this.searchBtn = document.getElementById("searchBtn");
     this.timeFormatSelect = document.getElementById("timeFormat");
     this.timeFormat = this.timeFormatSelect.value; // default
+    this.suggestionsList = document.getElementById("searchSuggestions");
   }
 
   bindEvents() {
@@ -33,15 +112,160 @@ class MeetingPlanner {
       this.updateCurrentTimes()
     );
     this.findButton.addEventListener("click", () => this.findMeetingTimes());
-    this.searchBtn.addEventListener("click", () => this.performSearch());
-    this.searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") this.performSearch();
-    });
     this.timeFormatSelect.addEventListener("change", () => {
       this.timeFormat = this.timeFormatSelect.value;
       this.updateCurrentTimes();
       this.findMeetingTimes();
     });
+    this.searchInput.addEventListener("input", () =>
+      this.showSearchSuggestions()
+    );
+    this.searchInput.addEventListener("keydown", (e) =>
+      this.handleSearchKeyDown(e)
+    );
+    document.addEventListener("click", (e) => this.handleOutsideClick(e));
+  }
+
+  showSearchSuggestions() {
+    const query = this.searchInput.value.toLowerCase().trim();
+    this.suggestionsList.innerHTML = "";
+
+    if (!query) {
+      this.suggestionsList.style.display = "none";
+      return;
+    }
+
+    const matches = this.validPages.filter((filename) =>
+      filename.includes(query)
+    );
+
+    if (matches.length === 0) {
+      this.suggestionsList.style.display = "none";
+      return;
+    }
+
+    matches.forEach((filename) => {
+      const li = document.createElement("li");
+      li.textContent = this.formatFilenameToLabel(filename);
+
+      li.setAttribute("tabindex", "0");
+      li.style.padding = "0.5rem";
+      li.style.cursor = "pointer";
+      li.addEventListener("click", () => {
+        window.location.href = `${filename}.html`;
+      });
+      li.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          window.location.href = `${filename}.html`;
+        }
+      });
+      this.suggestionsList.appendChild(li);
+    });
+
+    this.suggestionsList.style.display = "block";
+  }
+  formatFilenameToLabel(filename) {
+    const regionKeywords = new Set([
+      "west",
+      "east",
+      "north",
+      "south",
+      "central",
+      "mountain",
+      "atlantic",
+    ]);
+
+    const parts = filename.replace(/\.html$/, "").split("-");
+
+    // Special pages
+    if (
+      [
+        "index",
+        "about",
+        "contact",
+        "privacy-policy",
+        "terms-of-service",
+      ].includes(filename)
+    ) {
+      return parts.map((p) => this.capitalizeCountryCode(p)).join(" ");
+    }
+
+    let countries = [];
+    let region = null;
+
+    for (const part of parts) {
+      if (regionKeywords.has(part.toLowerCase())) {
+        region = this.capitalizeRegion(part);
+      } else {
+        countries.push(this.capitalizeCountryCode(part));
+      }
+    }
+
+    // If more than 2 countries, just join all with " / ", and put region at the end
+    const countryPart = countries.join(" / ");
+    return region ? `${countryPart} (${region})` : countryPart;
+  }
+
+  capitalizeCountryCode(code) {
+    const specialCases = {
+      usa: "USA",
+      uk: "UK",
+      uae: "UAE",
+    };
+
+    if (specialCases[code.toLowerCase()]) {
+      return specialCases[code.toLowerCase()];
+    }
+
+    return code
+      .split(/[\s-]/)
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+  }
+
+  capitalizeRegion(region) {
+    const regionMap = {
+      west: "West",
+      east: "East",
+      north: "North",
+      south: "South",
+      central: "Central",
+      mountain: "Mountain",
+      atlantic: "Atlantic",
+    };
+
+    return (
+      regionMap[region.toLowerCase()] ||
+      region.charAt(0).toUpperCase() + region.slice(1).toLowerCase()
+    );
+  }
+
+  handleSearchKeyDown(e) {
+    const items = this.suggestionsList.querySelectorAll("li");
+    if (!items.length) return;
+
+    let index = Array.from(items).findIndex(
+      (item) => item === document.activeElement
+    );
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = items[(index + 1) % items.length];
+      next.focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const prev = items[(index - 1 + items.length) % items.length];
+      prev.focus();
+    }
+  }
+
+  handleOutsideClick(e) {
+    if (
+      !this.searchInput.contains(e.target) &&
+      !this.suggestionsList.contains(e.target)
+    ) {
+      this.suggestionsList.style.display = "none";
+    }
   }
 
   updateCurrentTimes() {
@@ -254,37 +478,6 @@ class MeetingPlanner {
       "Asia/Manila": "Manila",
     };
     return names[timezone] || timezone;
-  }
-
-  performSearch() {
-    const query = this.searchInput.value.toLowerCase().trim();
-    if (!query) return;
-
-    // Simple search functionality - in a real app, this would be more sophisticated
-    const countryMappings = {
-      nepal: "nepal-usa.html",
-      india: "india-usa.html",
-      uk: "uk-usa.html",
-      britain: "uk-usa.html",
-      japan: "japan-usa.html",
-      australia: "australia-usa.html",
-      germany: "germany-usa.html",
-      canada: "canada-uk.html",
-      singapore: "singapore-usa.html",
-      philippines: "philippines-usa.html",
-      bangladesh: "bangladesh-usa.html",
-    };
-
-    for (const [country, page] of Object.entries(countryMappings)) {
-      if (query.includes(country)) {
-        window.location.href = page;
-        return;
-      }
-    }
-
-    alert(
-      `No specific page found for "${query}". Use the main planner above to compare any timezones.`
-    );
   }
 }
 

@@ -40,30 +40,45 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="logo">
-                <span class="logo-icon">🌍</span>
-                TimeSync Pro
-            </h1>
+            <a href="/" style="text-decoration: none; color: white;">
+                <h1 class="logo">
+                    Timezoneplanner
+                </h1>
+            </a>
 
             <nav class="quick-links" role="navigation" aria-label="Popular country combinations">
                 <div class="quick-links-container">
-                    <a href="nepal-usa.html" class="quick-link">Nepal-USA</a>
-                    <a href="india-usa.html" class="quick-link">India-USA</a>
-                    <a href="uk-usa.html" class="quick-link">UK-USA</a>
-                    <a href="japan-usa.html" class="quick-link">Japan-USA</a>
-                    <a href="australia-usa.html" class="quick-link">Australia-USA</a>
-                    <div class="search-container">
-                        <input type="search" id="countrySearch" placeholder="Search countries..."
-                            aria-label="Search for country combinations">
-                        <button type="button" id="searchBtn" aria-label="Search">🔍</button>
-                    </div>
+                    <nav class="quick-links" role="navigation" aria-label="Popular country combinations">
+                        <div class="quick-links-container">
+                            <a href="nepal-usa.html" class="quick-link">Nepal-USA</a>
+                            <a href="india-usa.html" class="quick-link">India-USA</a>
+                            <a href="uk-usa.html" class="quick-link">UK-USA</a>
+                            <a href="japan-usa.html" class="quick-link">Japan-USA</a>
+                            <a href="australia-usa.html" class="quick-link">Australia-USA</a>
+
+
+                        </div>
+                    </nav>
+
                 </div>
             </nav>
+
         </div>
     </header>
 
+
+
     <main class="main-content">
+
         <div class="container">
+            <div class="search-container" style="position: relative;">
+                <input type="search" id="countrySearch" placeholder="Search countries (Nepal-USA) ...."
+                    autocomplete="off" aria-label="Search for country combinations" />
+
+                <ul id="searchSuggestions"
+                    style="position: absolute; top: 100%; left: 0; right: 0; background: black; border: 1px solid #000; z-index: 10; list-style: none; padding: 0; margin: 0; max-height: 200px; overflow-y: auto; display: none;">
+                </ul>
+            </div>
             <!-- <section class="hero-section">
                 <h2>Find Perfect Meeting Times Across Time Zones</h2>
                 <p>Coordinate meetings effortlessly with team members from different countries. See overlapping work
@@ -228,7 +243,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 TimeSync Pro. All rights reserved. | Making global collaboration easier.</p>
+                <p>&copy; 2024 Timezoneplanner. All rights reserved. | Making global collaboration easier.</p>
             </div>
         </div>
     </footer>
