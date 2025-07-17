@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7EJ8464ZNZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7EJ8464ZNZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zone Meeting Planner - Find Perfect Meeting Times Across Countries</title>
+    <meta name="description"
+        content="Find the best meeting times across different time zones. Perfect for remote teams, international business, and global collaboration. Compare work hours instantly.">
+    <meta name="keywords"
+        content="time zone converter, meeting planner, international meeting times, remote work scheduler, global team coordination">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourdomain.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Time Zone Meeting Planner - Find Perfect Meeting Times">
+    <meta property="og:description"
+        content="Find the best meeting times across different time zones for remote teams and international business.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Time Zone Meeting Planner">
+    <meta name="twitter:description" content="Find perfect meeting times across different time zones instantly.">
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <span class="logo-icon">🌍</span>
+                TimeSync Pro
+            </h1>
+
+            <nav class="quick-links" role="navigation" aria-label="Popular country combinations">
+                <div class="quick-links-container">
+                    <a href="nepal-usa.html" class="quick-link">Nepal-USA</a>
+                    <a href="india-usa.html" class="quick-link">India-USA</a>
+                    <a href="uk-usa.html" class="quick-link">UK-USA</a>
+                    <a href="japan-usa.html" class="quick-link">Japan-USA</a>
+                    <a href="australia-usa.html" class="quick-link">Australia-USA</a>
+                    <div class="search-container">
+                        <input type="search" id="countrySearch" placeholder="Search countries..."
+                            aria-label="Search for country combinations">
+                        <button type="button" id="searchBtn" aria-label="Search">🔍</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- <section class="hero-section">
+                <h2>Find Perfect Meeting Times Across Time Zones</h2>
+                <p>Coordinate meetings effortlessly with team members from different countries. See overlapping work
+                    hours instantly.</p>
+            </section> -->
+
+            <section class="meeting-planner" aria-labelledby="planner-heading">
+                <h3 id="planner-heading" class="sr-only">Meeting Time Planner Tool</h3>
+
+                <div class="timezone-selector">
+                    <div class="timezone-group">
+                        <label for="timezone1">First Location</label>
+                        <select id="timezone1" aria-describedby="timezone1-desc">
+                            <option value="America/New_York">New York (EST/EDT)</option>
+                            <option value="America/Los_Angeles">Los Angeles (PST/PDT)</option>
+                            <option value="Europe/London">London (GMT/BST)</option>
+                            <option value="Asia/Kathmandu">Kathmandu (NPT)</option>
+                            <option value="Asia/Kolkata">Mumbai/Delhi (IST)</option>
+                            <option value="Asia/Tokyo">Tokyo (JST)</option>
+                            <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                            <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                            <option value="Asia/Singapore">Singapore (SGT)</option>
+                            <option value="Asia/Manila">Manila (PHT)</option>
+                        </select>
+                        <div id="timezone1-desc" class="timezone-desc">Current time will be displayed here</div>
+                    </div>
+
+                    <div class="timezone-group">
+                        <label for="timezone2">Second Location</label>
+                        <select id="timezone2" aria-describedby="timezone2-desc">
+                            <option value="America/Los_Angeles">Los Angeles (PST/PDT)</option>
+                            <option value="America/New_York">New York (EST/EDT)</option>
+                            <option value="Europe/London">London (GMT/BST)</option>
+                            <option value="Asia/Kathmandu">Kathmandu (NPT)</option>
+                            <option value="Asia/Kolkata">Mumbai/Delhi (IST)</option>
+                            <option value="Asia/Tokyo">Tokyo (JST)</option>
+                            <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                            <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                            <option value="Asia/Singapore">Singapore (SGT)</option>
+                            <option value="Asia/Manila">Manila (PHT)</option>
+                        </select>
+                        <div id="timezone2-desc" class="timezone-desc">Current time will be displayed here</div>
+                    </div>
+
+                    <div class="timezone-group optional">
+                        <label for="timezone3">Third Location (Optional)</label>
+                        <select id="timezone3" aria-describedby="timezone3-desc">
+                            <option value="">Select timezone...</option>
+                            <option value="America/New_York">New York (EST/EDT)</option>
+                            <option value="America/Los_Angeles">Los Angeles (PST/PDT)</option>
+                            <option value="Europe/London">London (GMT/BST)</option>
+                            <option value="Asia/Kathmandu">Kathmandu (NPT)</option>
+                            <option value="Asia/Kolkata">Mumbai/Delhi (IST)</option>
+                            <option value="Asia/Tokyo">Tokyo (JST)</option>
+                            <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                            <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                            <option value="Asia/Singapore">Singapore (SGT)</option>
+                            <option value="Asia/Manila">Manila (PHT)</option>
+                        </select>
+                        <div id="timezone3-desc" class="timezone-desc">Current time will be displayed here</div>
+                    </div>
+                </div>
+
+                <div class="work-hours-config">
+                    <h4>Work Hours Configuration</h4>
+                    <div class="work-hours-inputs">
+                        <div class="time-input-group timezone-group">
+                            <label for="timeFormat">Time Format</label>
+                            <select id="timeFormat">
+                                <option value="24">24-hour</option>
+                                <option value="12">12-hour (AM/PM)</option>
+                            </select>
+                        </div>
+                        <div class="time-input-group">
+                            <label for="workStart">Work Start Time</label>
+                            <input type="time" id="workStart" value="09:00" aria-describedby="work-hours-desc">
+                        </div>
+                        <div class="time-input-group">
+                            <label for="workEnd">Work End Time</label>
+                            <input type="time" id="workEnd" value="17:00">
+                        </div>
+                    </div>
+                    <div id="work-hours-desc" class="help-text">Set typical work hours to find overlapping meeting times
+                    </div>
+                </div>
+
+                <button type="button" id="findMeetingTimes" class="cta-button">Find Best Meeting Times</button>
+            </section>
+
+            <section id="results" class="results-section" aria-live="polite">
+                <!-- Results will be populated by JavaScript -->
+            </section>
+
+            <section class="features-section">
+                <h3>Why Use Our Meeting Planner?</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h4>Instant Results</h4>
+                        <p>Get overlapping work hours instantly without manual calculations</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h4>Global Coverage</h4>
+                        <p>Support for all major time zones and countries worldwide</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h4>Team Friendly</h4>
+                        <p>Perfect for remote teams and international business meetings</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h4>Mobile Ready</h4>
+                        <p>Works seamlessly on desktop, tablet, and mobile devices</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Popular Combinations</h4>
+                    <ul>
+                        <li><a href="nepal-usa.html">Nepal - USA Meeting Times</a></li>
+                        <li><a href="india-usa.html">India - USA Meeting Times</a></li>
+                        <li><a href="uk-usa.html">UK - USA Meeting Times</a></li>
+                        <li><a href="japan-usa.html">Japan - USA Meeting Times</a></li>
+                        <li><a href="australia-usa.html">Australia - USA Meeting Times</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>More Combinations</h4>
+                    <ul>
+                        <li><a href="germany-usa.html">Germany - USA Meeting Times</a></li>
+                        <li><a href="canada-uk.html">Canada - UK Meeting Times</a></li>
+                        <li><a href="singapore-usa.html">Singapore - USA Meeting Times</a></li>
+                        <li><a href="philippines-usa.html">Philippines - USA Meeting Times</a></li>
+                        <li><a href="bangladesh-usa.html">Bangladesh - USA Meeting Times</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="time-zone-guide.html">Time Zone Guide</a></li>
+                        <li><a href="meeting-tips.html">Meeting Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TimeSync Pro. All rights reserved. | Making global collaboration easier.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>
