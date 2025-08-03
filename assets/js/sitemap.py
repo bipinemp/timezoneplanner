@@ -260,56 +260,56 @@ def generate_sitemap():
     
     <!-- Main Pages -->
     <url>
-        <loc>https://timezoneplanner.netlify.app/</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/</loc>
         <lastmod>{}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://timezoneplanner.netlify.app/about.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/about.html</loc>
         <lastmod>{}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://timezoneplanner.netlify.app/how-it-works.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/how-it-works.html</loc>
         <lastmod>{}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://timezoneplanner.netlify.app/time-zone-guide.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/time-zone-guide.html</loc>
         <lastmod>{}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://timezoneplanner.netlify.app/meeting-tips.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/meeting-tips.html</loc>
         <lastmod>{}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     
     <url>
-        <loc>https://timezoneplanner.netlify.app/contact.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/contact.html</loc>
         <lastmod>{}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>https://timezoneplanner.netlify.app/privacy-policy.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/privacy-policy.html</loc>
         <lastmod>{}</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     
     <url>
-        <loc>https://timezoneplanner.netlify.app/terms-of-service.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/terms-of-service.html</loc>
         <lastmod>{}</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -334,7 +334,7 @@ def generate_sitemap():
         
         sitemap_content += f'''
     <url>
-        <loc>https://timezoneplanner.netlify.app/{slug}.html</loc>
+        <loc>https://internationalmeetingplanner.netlify.app/{slug}.html</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>{priority}</priority>
@@ -365,7 +365,7 @@ def main():
     print("\nSample timezone combination URLs:")
     for i, (tz1, tz2) in enumerate(popular_pairs[:10]):
         slug = slugify(tz1, tz2)
-        print(f"  • https://timezoneplanner.netlify.app/{slug}.html")
+        print(f"  • https://internationalmeetingplanner.netlify.app/{slug}.html")
     
     if len(popular_pairs) > 10:
         print(f"  ... and {len(popular_pairs) - 10} more")
