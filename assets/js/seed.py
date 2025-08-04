@@ -74,7 +74,7 @@ timezones = [
     ("Australia/Sydney", "Sydney (AEST/AEDT)"),
     ("Australia/Melbourne", "Melbourne (AEST/AEDT)"),
     ("Pacific/Auckland", "Auckland (NZST/NZDT)"),
-    ("Pacific/Fiji", "Fiji (FJT)")
+    ("Pacific/Fiji", "Fiji (FJT)"),
 ]
 
 # Expanded popular pairs (60+ combinations)
@@ -149,7 +149,7 @@ popular_pairs = [
     ("America/Santiago", "Asia/Hong_Kong"),
     ("Pacific/Fiji", "America/New_York"),
     ("Europe/Kiev", "America/Chicago"),
-    ("Asia/Almaty", "Europe/Berlin")
+    ("Asia/Almaty", "Europe/Berlin"),
 ]
 
 html_template = """<!DOCTYPE html>
@@ -173,7 +173,7 @@ html_template = """<!DOCTYPE html>
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <title>Meeting Planner for {name1_display} and {name2_display} | International International Time Zone Meeting Planner</title>
+    <title>International Meeting Planner for {name1_display} and {name2_display} | International International Time Zone Meeting Planner</title>
     <meta name="description"
         content="Plan perfect meeting times between {name1_display} and {name2_display}. Overlapping work hours and current times displayed.">
     <meta name="keywords"
@@ -228,7 +228,6 @@ html_template = """<!DOCTYPE html>
     </header>
 
     <main class="main-content">
-
         <div class="container">
             <div class="search-container" style="position: relative;">
                 <input type="search" id="countrySearch" placeholder="Search countries (Nepal-USA) ...."
@@ -352,9 +351,7 @@ html_template = """<!DOCTYPE html>
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="how-it-works.html">How It Works</a></li>
-                        <li><a href="time-zone-guide.html">Time Zone Guide</a></li>
-                        <li><a href="meeting-tips.html">Meeting Tips</a></li>
+                        
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -363,7 +360,7 @@ html_template = """<!DOCTYPE html>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="terms-of-service.html">Terms of Service</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="sitemap.html">Sitemap</a></li>
+                        <li><a href="sitemap.xml">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -379,6 +376,7 @@ html_template = """<!DOCTYPE html>
 </html>
 """
 
+
 def build_options(selected_val=None, include_empty=False):
     options = []
     if include_empty:
@@ -390,6 +388,7 @@ def build_options(selected_val=None, include_empty=False):
         else:
             options.append(f'<option value="{tz}">{label}</option>')
     return "\n".join(options)
+
 
 def slugify(tz1, tz2):
     """Enhanced slugify function with comprehensive timezone mapping"""
@@ -414,7 +413,6 @@ def slugify(tz1, tz2):
         "America/Caracas": "venezuela",
         "America/Santiago": "chile",
         "Pacific/Honolulu": "hawaii",
-        
         # Europe
         "Europe/London": "uk",
         "Europe/Dublin": "ireland",
@@ -437,7 +435,6 @@ def slugify(tz1, tz2):
         "Europe/Istanbul": "turkey",
         "Europe/Moscow": "russia",
         "Europe/Kiev": "ukraine",
-        
         # Asia
         "Asia/Tokyo": "japan",
         "Asia/Seoul": "korea",
@@ -460,14 +457,12 @@ def slugify(tz1, tz2):
         "Asia/Yangon": "myanmar",
         "Asia/Tashkent": "uzbekistan",
         "Asia/Almaty": "kazakhstan",
-        
         # Africa
         "Africa/Johannesburg": "southafrica",
         "Africa/Cairo": "egypt",
         "Africa/Nairobi": "kenya",
         "Africa/Lagos": "nigeria",
         "Africa/Casablanca": "morocco",
-        
         # Oceania
         "Australia/Sydney": "australia",
         "Australia/Melbourne": "australia-south",
@@ -476,24 +471,25 @@ def slugify(tz1, tz2):
         "Australia/Adelaide": "australia-central",
         "Australia/Darwin": "australia-north",
         "Pacific/Auckland": "newzealand",
-        "Pacific/Fiji": "fiji"
+        "Pacific/Fiji": "fiji",
     }
-    
+
     # Get short names for both timezones
     n1 = short_names.get(tz1, tz1.split("/")[-1].lower().replace("_", ""))
     n2 = short_names.get(tz2, tz2.split("/")[-1].lower().replace("_", ""))
-    
+
     # Ensure consistent ordering for same pairs (alphabetical)
     if n1 > n2:
         n1, n2 = n2, n1
-    
+
     return f"{n1}-{n2}"
+
 
 def main():
     os.makedirs("output_html", exist_ok=True)
-    
+
     print(f"Generating HTML files for {len(popular_pairs)} timezone combinations...")
-    
+
     for tz1, tz2 in popular_pairs:
         # Build options:
         timezone1_options = build_options(selected_val=tz1, include_empty=False)
@@ -520,6 +516,7 @@ def main():
 
     print(f"\nGeneration complete! Created {len(popular_pairs)} HTML files.")
     print(f"Total timezones available: {len(timezones)}")
+
 
 if __name__ == "__main__":
     main()
