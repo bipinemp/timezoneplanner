@@ -173,20 +173,20 @@ html_template = """<!DOCTYPE html>
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <title>International Meeting Planner for {name1_display} and {name2_display} | International International Time Zone Meeting Planner</title>
+    <title>Global Meeting Planner for {name1_display} and {name2_display} | Global Meeting Planner</title>
     <meta name="description"
         content="Plan perfect meeting times between {name1_display} and {name2_display}. Overlapping work hours and current times displayed.">
     <meta name="keywords"
-        content="time zone converter, meeting planner, international meeting times, remote work scheduler, global team coordination">
+        content="time zone converter, meeting planner, globalmeeting times, remote work scheduler, global team coordination">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://internationalmeetingplanner.netlify.app/{slug}.html">
+    <link rel="canonical" href="https://globalmeetingplanner.xyz/{slug}.html">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Meeting Planner: {name1_display} & {name2_display}">
     <meta property="og:description"
         content="Plan perfect meeting times between {name1_display} and {name2_display}. Overlapping work hours and current times.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://internationalmeetingplanner.netlify.app/{slug}.html">
+    <meta property="og:url" content="https://globalmeetingplanner.xyz/{slug}.html">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -203,7 +203,7 @@ html_template = """<!DOCTYPE html>
         <div class="container">
             <h1 class="logo">
                 
-                International Meeting Planner
+                Global Meeting Planner
             </h1>
 
            <nav class="quick-links" role="navigation" aria-label="Popular country combinations">
@@ -312,7 +312,7 @@ html_template = """<!DOCTYPE html>
                     <div class="feature-card">
                         <div class="feature-icon">👥</div>
                         <h4>Team Friendly</h4>
-                        <p>Perfect for remote teams and international business meetings</p>
+                        <p>Perfect for remote teams and globalbusiness meetings</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
@@ -365,7 +365,7 @@ html_template = """<!DOCTYPE html>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 International Meeting Planner. All rights reserved. | Making global collaboration easier.</p>
+                <p>&copy; 2024 Global Meeting Planner. All rights reserved. | Making global collaboration easier.</p>
             </div>
         </div>
     </footer>

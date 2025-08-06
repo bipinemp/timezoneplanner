@@ -1,5 +1,5 @@
 # Robots.txt for TextConverter - Text Case Converter Tool
-# https://internationalmeetingplanner.netlify.app/robots.txt
+# https://globalmeetingplanner.xyz/robots.txt
 
 User-agent: *
 Allow: /
@@ -50,5 +50,5 @@ Allow: /*.ico
 # Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://internationalmeetingplanner.app/sitemap.xml
+Sitemap: https://globalmeetingplanner.xyz/sitemap.xml
 
