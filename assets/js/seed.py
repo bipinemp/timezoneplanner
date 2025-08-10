@@ -206,7 +206,6 @@ html_template = """<!DOCTYPE html>
   gtag('config', 'G-BZHK42VLHD');
 </script>
 
-<link rel="canonical" href="https://globalmeetingplanner.xyz/" />
 </head>
 
 <body>
